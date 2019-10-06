@@ -46,4 +46,4 @@ end
 
 board=[" ", " ", " ", " ", " ", " ", " ", " ", " "]
 
-turn(board)
+#turn(board)
