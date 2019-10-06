@@ -44,7 +44,7 @@ def turn(board)
 
   if player_move == false then
     puts "Please enter 1-9:"
-    user_input=gets.strip
+    user_input= ''
     p user_input
   end
 end
