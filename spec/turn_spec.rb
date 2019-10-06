@@ -77,8 +77,8 @@ describe './lib/turn.rb' do
   describe '#turn' do
     it 'asks the user for input by printing: "Please enter 1-9:"' do
       board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-      allow($stdout).to receive(:puts)
-      allow(self).to receive(:gets).and_return("1")
+      allow_any_instance_of($stdout).to receive(:puts)
+      allow_any_instance_of(self).to receive(:gets).and_return("1")
 
       expect($stdout).to receive(:puts).with("Please enter 1-9:")
 
@@ -87,7 +87,7 @@ describe './lib/turn.rb' do
 
     it 'gets the user input' do
       board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-      allow($stdout).to receive(:puts)
+      allow_any_instance_of($stdout).to receive(:puts)
 
       expect(self).to receive(:gets).and_return("1")
 
@@ -96,9 +96,9 @@ describe './lib/turn.rb' do
 
     it 'calls the input_to_index method' do
       board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-      allow($stdout).to receive(:puts)
+      allow_any_instance_of($stdout).to receive(:puts)
 
-      allow(self).to receive(:gets).and_return("1")
+      allow_any_instance_of(self).to receive(:gets).and_return("1")
 
       expect(self).to receive(:input_to_index).and_call_original
 
@@ -107,7 +107,7 @@ describe './lib/turn.rb' do
 
     it 'validates the input correctly' do
       board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-      allow($stdout).to receive(:puts)
+      allow_any_instance_of($stdout).to receive(:puts)
 
       expect(self).to receive(:gets).and_return("1")
       expect(self).to receive(:valid_move?).with(board, 0).and_return(true)
@@ -118,7 +118,7 @@ describe './lib/turn.rb' do
     it 'asks for input again after a failed validation' do
       board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 
-      allow($stdout).to receive(:puts)
+      allow_any_instance_of($stdout).to receive(:puts)
 
       expect(self).to receive(:gets).and_return("invalid")
       expect(self).to receive(:gets).and_return("1")
@@ -129,7 +129,7 @@ describe './lib/turn.rb' do
     it 'makes valid moves' do
       board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 
-      allow($stdout).to receive(:puts)
+      allow_any_instance_of($stdout).to receive(:puts)
 
       expect(self).to receive(:gets).and_return("1")
 
@@ -141,7 +141,7 @@ describe './lib/turn.rb' do
     it 'displays a correct board after a valid turn' do
       board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 
-      allow(self).to receive(:gets).and_return("5")
+      allow_any_instance_of(self).to receive(:gets).and_return("5")
 
       output = capture_puts{ turn(board) }
 
